@@ -1,0 +1,56 @@
+/* Start: Manrope */
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./Manrope-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./Manrope-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: 200;
+  font-style: normal;
+  src: url('./Manrope-Light.ttf');
+}
+
+/* End: Manrope */
+
+/* Start: Unbounded */
+
+@font-face {
+  font-family: 'Unbounded';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./Unbounded-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./Unbounded-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  font-weight: 900;
+  font-style: normal;
+  src: url('./Unbounded-Black.ttf');
+}
+
+@font-face {
+  font-family: 'Unbounded';
+  font-weight: 200;
+  font-style: normal;
+  src: url('./Unbounded-Light.ttf');
+}
+
+/* End: Unbounded */

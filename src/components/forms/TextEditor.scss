@@ -1,0 +1,56 @@
+.texteditor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-top: 2rem;
+  font-family: 'Manrope';
+  background: #f3f3f3;
+
+  &-menu {
+    width: 100%;
+    padding: .5rem;
+    background: #dedede;
+    justify-content: start;
+
+    &__button {
+      background: #c3c3c3;
+      transition: .3s;
+      border: 0;
+      padding: .5rem;
+      border-radius: .5rem;
+      cursor: pointer;
+
+      &.is-active, &:hover, &:focus {
+        background: white;
+      }
+    }
+
+    option {padding: .5rem .75rem;}
+  }
+
+  &-field {
+    min-height: 200px;
+    width: calc(100% - 1rem);
+    margin: .5rem;
+    background: white;
+    border-radius: .75rem;
+    padding: .5rem .75rem;
+
+    & div {min-height: 300px;}
+
+    ul, ol {margin-left: 1rem;}
+
+    code {
+      padding: .5rem .75rem;
+      border-radius: .75rem;
+      background: #3c3c3c;
+      color: white;
+      margin-right: .5rem;
+    }
+  }
+}
