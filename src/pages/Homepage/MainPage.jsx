@@ -1,4 +1,7 @@
+import { IconArrowRight } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
+import Button from "../../components/buttons/Button";
+import Posts from "../../components/posts/Posts";
 import { getAllPosts } from "../../helpers/apiFetch";
 
 const getData = async (setData , page, filter, sortBy) => {
@@ -14,20 +17,16 @@ const MainPage = () => {
   }, [])
 
   return (
-    <div>
-      {posts.length > 0 && (
-        posts.map(post => {
-          return (
-            <div key={post.id}>
-              <h3>{post.title}</h3>
-              <p>{post.subtitle}</p>
-              <img src={post.img} alt="" />
-              <div dangerouslySetInnerHTML={{ __html: post.text }}></div>
-            </div>
-          )
-        })
-      )}
-    </div>
+    <>
+      <h1>Články</h1>
+      <Posts posts={posts} />
+      <Button
+        text="Test tlačítka"
+        icon={<IconArrowRight stroke={1.5} size={20} />}
+        className="primary"
+        iconPosition="right"
+      />
+    </>
   )
 }
 
