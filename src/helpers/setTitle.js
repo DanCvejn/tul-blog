@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const setDocumentTitle = (title) => {
   useEffect(() => {
-    document.title = title + ' | ScoreMate';
+    document.title = title + ' | Jak na web';
   }, [title]);
 }
 

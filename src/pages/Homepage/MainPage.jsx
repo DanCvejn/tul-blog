@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 import Button from "../../components/buttons/Button";
 import Posts from "../../components/posts/Posts";
 import { getAllPosts } from "../../helpers/apiFetch";
+import setDocumentTitle from "../../helpers/setTitle";
 
 const getData = async (setData , page, filter, sortBy) => {
   const res = await getAllPosts(page, filter, sortBy);
   return setData(res.items);
 }
 
-const MainPage = () => {
+const MainPage = ({ title }) => {
   const [posts, setPosts] = useState([]);
+  setDocumentTitle(title)
 
   useEffect(() => {
     getData(setPosts, 1, null, "-created")

@@ -1,10 +1,10 @@
 import { IconEdit, IconHome } from '@tabler/icons-react';
-import TextEditor from '../components/forms/TextEditor';
 import MainPage from '../pages/Homepage/MainPage';
 import Layout from '../pages/Layout';
 import Error404 from '../pages/Error404';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import PostEditor from '../pages/postseditor/PostEditor';
 
 const iconSize = 25;
 const iconStroke = 1.5;
@@ -28,7 +28,7 @@ const routes = [
           },
           {
             path: 'editor',
-            element: <TextEditor title={'Editor Postů'} />,
+            element: <PostEditor title={'Editor Postů'} />,
             icon: <IconEdit stroke={iconStroke} size={iconSize} />,
             url: '/editor',
             text: 'Editor postů',

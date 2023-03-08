@@ -24,6 +24,15 @@ button.primary {
   }
 }
 
+button.secondary {
+  border: 1px solid #25262B;
+  background: white;
+
+  &:hover {
+    background: #eaeaea;
+  }
+}
+
 button.submit {
   background: $blue;
   color: white;

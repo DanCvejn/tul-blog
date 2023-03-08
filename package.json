@@ -12,6 +12,8 @@
     "@tabler/icons-react": "^2.7.0",
     "@tiptap/extension-code": "^2.0.0-beta.220",
     "@tiptap/extension-color": "^2.0.0-beta.220",
+    "@tiptap/extension-image": "^2.0.0-beta.220",
+    "@tiptap/extension-link": "^2.0.0-beta.220",
     "@tiptap/extension-list-item": "^2.0.0-beta.220",
     "@tiptap/extension-text-style": "^2.0.0-beta.220",
     "@tiptap/pm": "^2.0.0-beta.220",
