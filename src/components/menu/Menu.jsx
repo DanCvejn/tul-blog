@@ -1,31 +1,45 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { getMenuRoutes } from "../../helpers/routes";
+import { UserContext } from "../../providers/UserProvider";
 import Container from "../content/Container";
+import { parseName } from "../../helpers/getFullName";
 import "./Menu.scss";
 
 const Menu = () => {
-  const menuItems = getMenuRoutes();
+  const { user } = useContext(UserContext);
+  const menuItems = getMenuRoutes(user);
 
   return (
     <div className="bg-indigo-800 py-4 font-unbounded">
       <Container>
         <nav className="menu flex justify-between items-center">
-          <Link to={'/'} className="menu__link no-underline font-black text-2xl">Jak na web</Link>
+          <NavLink to={'/'} className="menu__link menu__main-link no-underline font-black text-2xl">Jak na web</NavLink>
           <ul className="menu__list list-none flex items-center">
             {menuItems.map(item => {
               return (
                 <li key={item.url}>
-                  <Link to={item.url} className="menu__link no-underline flex items-center px-2 mx-4 py-1 font-bold">
+                  <NavLink
+                    to={item.url}
+                    className="menu__link no-underline flex items-center px-2 mx-4 py-1 font-bold"
+                  >
                     {item.text}
-                  </Link>
+                  </NavLink>
                 </li>
               )
             })}
-            <li>
-              <Link to={"/register"} className="menu__link menu__special-link flex items-center no-underline font-bold">
-                Přidat se
-              </Link>
-            </li>
+            {user ?
+              <li>
+                <NavLink to="/user" className="menu__link menu__special-link flex items-center no-underline font-bold ml-4">
+                  {parseName(user)}
+                </NavLink>
+              </li>:
+              <li>
+                <NavLink to={"/register"} className="menu__link menu__special-link flex items-center no-underline font-bold ml-4">
+                  Přidat se
+                </NavLink>
+              </li>
+            }
           </ul>
         </nav>
       </Container>

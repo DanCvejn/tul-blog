@@ -1,13 +1,10 @@
-import { IconEdit, IconHome } from '@tabler/icons-react';
 import MainPage from '../pages/Homepage/MainPage';
 import Layout from '../pages/Layout';
 import Error404 from '../pages/Error404';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import PostEditor from '../pages/postseditor/PostEditor';
-
-const iconSize = 25;
-const iconStroke = 1.5;
+import MyPosts from '../pages/myposts/MyPosts';
+import CreatePost from "../pages/myposts/CreatePost";
 
 const routes = [
   {
@@ -21,18 +18,28 @@ const routes = [
           {
             index: true,
             element: <MainPage title={'Přehled'} />,
-            icon: <IconHome size={iconSize} stroke={iconStroke} />,
             url: '/',
             text: 'Domů',
             menu: true,
+            user: true,
           },
           {
-            path: 'editor',
-            element: <PostEditor title={'Editor Postů'} />,
-            icon: <IconEdit stroke={iconStroke} size={iconSize} />,
-            url: '/editor',
-            text: 'Editor postů',
+            path: '/my-posts',
+            url: '/my-posts',
+            text: 'Moje posty',
             menu: true,
+            needUser: true,
+            children: [
+              {
+                index: true,
+                path: '',
+                element: <MyPosts title={'Moje posty'} />,
+              },
+              {
+                path: 'create',
+                element: <CreatePost title={"Nový post"} />,
+              },
+            ]
           },
           {
             path: 'login',
@@ -40,6 +47,7 @@ const routes = [
             url: 'login',
             text: 'Přihlásit se',
             menu: true,
+            user: false,
           },
           {
             element: <Register title={'Registrace'} />,
@@ -60,6 +68,9 @@ export const getRoutes = () => {
   return routes;
 }
 
-export const getMenuRoutes = () => {
-  return routes[0].children[0].children.filter(child => child.menu);
+export const getMenuRoutes = (user) => {
+  if (user) {
+    return routes[0].children[0].children.filter(child => child.menu && (child.user || child.needUser));
+  }
+  return routes[0].children[0].children.filter(child => child.menu && !child.needUser);
 }

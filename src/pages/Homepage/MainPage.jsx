@@ -1,9 +1,9 @@
-import { IconArrowRight } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
-import Button from "../../components/buttons/Button";
 import Posts from "../../components/posts/Posts";
 import { getAllPosts } from "../../helpers/apiFetch";
 import setDocumentTitle from "../../helpers/setTitle";
+import Content from "../../components/Content/Content";
+import FullPageLoader from "../../components/loaders/FullPageLoader";
 
 const getData = async (setData , page, filter, sortBy) => {
   const res = await getAllPosts(page, filter, sortBy);
@@ -11,7 +11,7 @@ const getData = async (setData , page, filter, sortBy) => {
 }
 
 const MainPage = ({ title }) => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   setDocumentTitle(title)
 
   useEffect(() => {
@@ -20,14 +20,12 @@ const MainPage = ({ title }) => {
 
   return (
     <>
-      <h1>Články</h1>
-      <Posts posts={posts} />
-      <Button
-        text="Test tlačítka"
-        icon={<IconArrowRight stroke={1.5} size={20} />}
-        iconPosition={"right"}
-        className={"primary"}
-      />
+      <Content title={"Články"}>
+        {!posts ?
+          <FullPageLoader />:
+          <Posts posts={posts} />
+        }
+      </Content>
     </>
   )
 }

@@ -15,6 +15,14 @@ export const getAllPosts = async (page, filter, sortBy) => {
   return res;
 }
 
+export const getMyPosts = async (page, userId) => {
+  let options = {
+    filter: `author.id = "${userId}"`,
+  };
+  const res = await pb.collection('posts').getList(page, 10, options);
+  return res;
+}
+
 export const register = async (data) => {
   try {
     const res = await pb.collection("users").create(data);
@@ -37,4 +45,11 @@ export const login = async (email, password) => {
   } catch (error) {
     return { error: true, message: "Nastala chyba" };
   }
+}
+
+export const getUser = async () => {
+  if (pb.authStore.isValid) {
+    return pb.authStore.model;
+  }
+  return null;
 }

@@ -3,12 +3,30 @@
 .menu {
   &__link {
     transition: .3s;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
     color: black;
+    position: relative;
 
-    &:hover {
+    &:not(.menu__special-link):not(.menu__main-link).active {
       border-bottom-color: black;
+    }
+
+    &:not(.menu__special-link):not(.menu__main-link):before {
+      position: absolute;
+      bottom: -3px;
+      height: 3px;
+      left: 0;
+      width: 0%;
+      content: "";
+      background: $blue;
+      transition: .3s;
+    }
+
+    &:not(.menu__special-link):hover {
+      &::before {
+        width: 100%;
+      }
     }
   }
 

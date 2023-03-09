@@ -14,9 +14,10 @@ const Login = ({ title }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await login(email, password);
-    console.log(res);
     if (res.error) {
       console.log(res.message);
+    } else {
+      return window.location.reload();
     }
   }
 

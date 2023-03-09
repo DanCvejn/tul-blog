@@ -14,11 +14,11 @@ const Button = ({ text,
     <button
       type={type}
       onClick={onClick}
-      className={className + " flex items-center justify-center " + iconPosition}
+      className={className + " flex items-center justify-center " + iconPosition + (className.includes("submit") && " font-bold")}
       disabled={disabled || loading}
     >
       {loading ?
-        <IconLoader2 size={20} stroke={1.5} className={"animate-spin"} /> :
+        <IconLoader2 size={20} stroke={2} className={"animate-spin"} /> :
         <>
           {(iconPosition === "left" && icon) && icon}
           {text}
