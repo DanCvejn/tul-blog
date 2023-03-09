@@ -26,7 +26,7 @@ const MainPage = ({ title }) => {
         text="Test tlačítka"
         icon={<IconArrowRight stroke={1.5} size={20} />}
         iconPosition={"right"}
-        className={"secondary"}
+        className={"primary"}
       />
     </>
   )
