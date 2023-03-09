@@ -4,15 +4,20 @@ import { useState } from "react";
 import PasswordInput from "../components/forms/PasswordInput";
 import Button from "../components/buttons/Button";
 import { IconArrowRight } from "@tabler/icons-react";
+import { login } from "../helpers/apiFetch";
 
 const Login = ({ title }) => {
   setDocumentTitle(title);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("login");
+    const res = await login(email, password);
+    console.log(res);
+    if (res.error) {
+      console.log(res.message);
+    }
   }
 
   return (
@@ -37,7 +42,7 @@ const Login = ({ title }) => {
         <Button
           type="submit"
           text={"Přihlásit"}
-          icon={<IconArrowRight stroke={1.5} size={20} />}
+          icon={<IconArrowRight stroke={3} size={20} />}
           iconPosition="right"
           className="w-full submit mt-6"
         />
