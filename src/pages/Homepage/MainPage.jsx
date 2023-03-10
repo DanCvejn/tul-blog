@@ -20,7 +20,7 @@ const MainPage = ({ title }) => {
 
   return (
     <>
-      <Content title={"Články"}>
+      <Content>
         {!posts ?
           <FullPageLoader />:
           <Posts posts={posts} />

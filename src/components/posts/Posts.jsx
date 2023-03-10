@@ -1,3 +1,4 @@
+import LastPostPreview from "./LastPostPreview";
 import PostPreview from "./PostPreview";
 import "./Posts.scss";
 
@@ -6,14 +7,16 @@ const Posts = ({ posts }) => {
 
     return (
         <div className="posts">
+            <h2 className="text-4xl mb-4">Poslední článek</h2>
             {posts.map((post, i) => {
-                if (i < 3) {
-                    return <p>{i}{post.title}</p>
+                if (i < 1) {
+                    return <LastPostPreview post={post} />
                 }
             })}
+            <h2 className="mb-4">Další články</h2>
             <div className="md:grid grid-cols-2 flex flex-col flex-wrap gap-4">
                 {posts.map((post, i) => {
-                    if (i > 2) {
+                    if (i > 0) {
                         return <PostPreview post={post} key={post.id} />
                     }
                 })}
