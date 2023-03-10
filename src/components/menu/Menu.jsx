@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { getMenuRoutes } from "../../helpers/routes";
 import { UserContext } from "../../providers/UserProvider";
 import Container from "../content/Container";
-import { parseName } from "../../helpers/getFullName";
+import { parseName } from "../../helpers/parsing";
 import "./Menu.scss";
 
 const Menu = () => {
@@ -11,7 +11,7 @@ const Menu = () => {
   const menuItems = getMenuRoutes(user);
 
   return (
-    <div className="bg-indigo-800 py-4 font-unbounded">
+    <div className="bg-indigo-800 py-4 font-unbounded sticky top-0">
       <Container>
         <nav className="menu flex justify-between items-center">
           <NavLink to={'/'} className="menu__link menu__main-link no-underline font-black text-2xl">Jak na web</NavLink>

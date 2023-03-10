@@ -81,6 +81,7 @@ const TextEditorMenu = ({ editor, handleSave, openModal, setModalCfg }) => {
             .toggleBold()
             .run()
         }
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('bold') ? 'is-active' : '')}
       >
         <IconBold stroke={iconStroke} size={iconSize} />
@@ -94,60 +95,83 @@ const TextEditorMenu = ({ editor, handleSave, openModal, setModalCfg }) => {
             .toggleItalic()
             .run()
         }
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('italic') ? 'is-active' : '')}
       >
         <IconItalic stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('heading', { level: 1 }) ? 'is-active' : '')}
       >
         <IconH1 stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('heading', { level: 2 }) ? 'is-active' : '')}
       >
         <IconH2 stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('heading', { level: 3 }) ? 'is-active' : '')}
       >
         <IconH3 stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('bulletList') ? 'is-active' : '')}
       >
         <IconList stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('orderedList') ? 'is-active' : '')}
       >
         <IconListNumbers stroke={iconStroke} size={iconSize} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleCode().run()}
+        type="button"
         className={"texteditor-menu__button " + (editor.isActive('code') ? 'is-active' : '')}
       >
         <IconCode stroke={iconStroke} size={iconSize} />
       </button>
-      <select className="texteditor-menu__button" onChange={(e) => editor.chain().focus().setColor(e.target.value).run()}>
+      <select
+        className="texteditor-menu__button"
+        onChange={(e) => editor.chain().focus().setColor(e.target.value).run()}
+      >
         {colors.map(color => {
           return (
             <option key={color.value} value={color.value}>{color.label}</option>
           )
         })}
       </select>
-      <button onClick={openLinkModal} className={"texteditor-menu__button " + (editor.isActive('link') ? 'is-active' : '')}>
+      <button
+        onClick={openLinkModal}
+        type="button"
+        className={"texteditor-menu__button " + (editor.isActive('link') ? 'is-active' : '')}
+      >
         <IconLink stroke={iconStroke} size={iconSize} />
       </button>
-      <button onClick={() => setLink("")} className={"texteditor-menu__button " + (editor.isActive('link') ? 'is-active' : '')} disabled={!editor.isActive('link')}>
+      <button
+        onClick={() => setLink("")}
+        className={"texteditor-menu__button " + (editor.isActive('link') ? 'is-active' : '')}
+        disabled={!editor.isActive('link')}
+        type="button"
+      >
         <IconLinkOff stroke={iconStroke} size={iconSize} />
       </button>
-      <button onClick={openImageModal} className={"texteditor-menu__button"}>
+      <button
+        onClick={openImageModal}
+        className={"texteditor-menu__button"}
+        type="button"
+      >
         <IconPhotoPlus stroke={iconStroke} size={iconSize} />
       </button>
       <button
@@ -159,6 +183,7 @@ const TextEditorMenu = ({ editor, handleSave, openModal, setModalCfg }) => {
             .undo()
             .run()
         }
+        type="button"
         className="texteditor-menu__button"
       >
         <IconArrowBackUp stroke={iconStroke} size={iconSize} />
@@ -172,13 +197,16 @@ const TextEditorMenu = ({ editor, handleSave, openModal, setModalCfg }) => {
             .redo()
             .run()
         }
+        type="button"
         className="texteditor-menu__button"
       >
         <IconArrowForwardUp stroke={iconStroke} size={iconSize} />
       </button>
-      <button onClick={handleSave} className="texteditor-menu__button">
-        <IconDeviceFloppy stroke={iconStroke} size={iconSize} />
-      </button>
+      {handleSave &&
+        <button onClick={handleSave} className="texteditor-menu__button">
+          <IconDeviceFloppy stroke={iconStroke} size={iconSize} />
+        </button>
+      }
     </div>
   )
 }

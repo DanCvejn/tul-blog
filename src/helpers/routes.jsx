@@ -5,6 +5,8 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import MyPosts from '../pages/myposts/MyPosts';
 import CreatePost from "../pages/myposts/CreatePost";
+import User from '../pages/User/User';
+import PostDetail from '../components/posts/PostDetail';
 
 const routes = [
   {
@@ -40,6 +42,20 @@ const routes = [
                 element: <CreatePost title={"Nový post"} />,
               },
             ]
+          },
+          {
+            path: "/posts",
+            children: [
+              {
+                path: ':postId',
+                element: <PostDetail title={"Článek"} />,
+              },
+            ]
+          },
+          {
+            path: 'user',
+            element: <User />,
+            needUser: true,
           },
           {
             path: 'login',

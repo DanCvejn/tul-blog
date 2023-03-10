@@ -14,7 +14,7 @@ const Button = ({ text,
     <button
       type={type}
       onClick={onClick}
-      className={className + " flex items-center justify-center " + iconPosition + (className.includes("submit") && " font-bold")}
+      className={className + " flex items-center justify-center " + iconPosition + (className.includes("submit") ? " font-bold" : "")}
       disabled={disabled || loading}
     >
       {loading ?

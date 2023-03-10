@@ -19,7 +19,7 @@ button.primary {
   background: #25262B;
   color: white;
 
-  &:hover {
+  &:hover, &:disabled {
     background: #1A1B1E;
   }
 }
@@ -28,7 +28,7 @@ button.secondary {
   border: 1px solid #25262B;
   background: white;
 
-  &:hover {
+  &:hover, &:disabled {
     background: #eaeaea;
   }
 }
@@ -38,7 +38,7 @@ button.submit {
   color: white;
   font-weight: bold;
 
-  &:hover {
+  &:hover, &:disabled {
     background: $light-blue;
   }
 }

@@ -10,7 +10,7 @@ import { useState } from "react";
 import Link from "@tiptap/extension-link";
 import Image from '@tiptap/extension-image';
 
-const TextEditor = ({ handleSave }) => {
+const TextEditor = ({ label, required, onChange, handleSave }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalCfg, setModalCfg] = useState({});
   const editor = useEditor({
@@ -33,7 +33,11 @@ const TextEditor = ({ handleSave }) => {
       }),
       Image
     ],
-    content: ``
+    content: `<p></p>`,
+    onUpdate: ({ editor }) => {
+      const textHTML = editor.getHTML();
+      onChange("text", textHTML);
+    }
   })
 
   const closeModal = () => {
@@ -42,23 +46,26 @@ const TextEditor = ({ handleSave }) => {
   }
 
   return (
-    <div className="texteditor relative">
-      <TextEditorMenu
-        editor={editor}
-        handleSave={handleSave}
-        openModal={setModalOpen}
-        setModalCfg={setModalCfg}
-      />
-      <EditorContent editor={editor} className="texteditor-field" />
-      <TextEditorModal
-        title={modalCfg.title}
-        text={modalCfg.text}
-        onReset={modalCfg.onReset}
-        onConfirm={modalCfg.onConfirm}
-        opened={modalOpen}
-        onClose={closeModal}
-        value={modalCfg.value}
-      />
+    <div className="mt-2">
+      <p className="text-sm font-bold">{label}{required && <span className="text-red-200 ml-1">*</span>}</p>
+      <div className="texteditor relative">
+        <TextEditorMenu
+          editor={editor}
+          handleSave={handleSave}
+          openModal={setModalOpen}
+          setModalCfg={setModalCfg}
+        />
+        <EditorContent editor={editor} className="texteditor-field" />
+        <TextEditorModal
+          title={modalCfg.title}
+          text={modalCfg.text}
+          onReset={modalCfg.onReset}
+          onConfirm={modalCfg.onConfirm}
+          opened={modalOpen}
+          onClose={closeModal}
+          value={modalCfg.value}
+        />
+      </div>
     </div>
   )
 }

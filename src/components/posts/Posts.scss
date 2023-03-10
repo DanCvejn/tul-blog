@@ -1,0 +1,31 @@
+.posts {
+  .post {
+    img {
+      height: 300px;
+      width: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.post-detail {
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .subtitle {
+    margin-bottom: .5rem;
+  }
+  .main-image {
+    width: 100%;
+    max-width: 900px;
+  }
+  img {border-radius: .75rem;}
+  img:not(.main-image) {margin: 1rem 0;}
+  .text {
+    ul, ol {
+      margin-left: 1.5rem;
+    }
+    a {color: black;}
+  }
+}
