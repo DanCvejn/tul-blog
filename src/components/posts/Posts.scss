@@ -10,6 +10,9 @@
 }
 
 .post-detail {
+  max-width: 900px;
+  margin: 0 auto;
+
   h1 {
     margin-bottom: 1rem;
   }
@@ -32,12 +35,12 @@
 
 .post-big {
   position: relative;
-  height: 500px;
   width: 100%;
-  margin-bottom: 2rem;
+  height: 100%;
   border-radius: 1rem;
   overflow: hidden;
   cursor: pointer;
+  transition: .5s;
 
   img {
     position: absolute;
@@ -61,6 +64,7 @@
 
   .post__content {
     position: absolute;
+    width: 100%;
     bottom: 0;
     left: 0;
     z-index: 1;
@@ -69,6 +73,6 @@
     background: linear-gradient(0deg, #000000b4, #00000000);
     color: white;
 
-    h3, p {max-width: 75%;}
+    h3, p {transition: .5s;}
   }
 }

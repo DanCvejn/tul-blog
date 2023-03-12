@@ -7,6 +7,7 @@ import MyPosts from '../pages/myposts/MyPosts';
 import CreatePost from "../pages/myposts/CreatePost";
 import User from '../pages/User/User';
 import PostDetail from '../components/posts/PostDetail';
+import PostsPage from "../pages/posts/PostsPage";
 
 const routes = [
   {
@@ -26,6 +27,23 @@ const routes = [
             user: true,
           },
           {
+            path: "/posts",
+            url: "/posts",
+            text: "Články",
+            menu: true,
+            user: true,
+            children: [
+              {
+                path: '',
+                element: <PostsPage title={"Článeky"} />,
+              },
+              {
+                path: ':postId',
+                element: <PostDetail title={"Článek"} />,
+              },
+            ]
+          },
+          {
             path: '/my-posts',
             url: '/my-posts',
             text: 'Moje posty',
@@ -40,15 +58,6 @@ const routes = [
               {
                 path: 'create',
                 element: <CreatePost title={"Nový post"} />,
-              },
-            ]
-          },
-          {
-            path: "/posts",
-            children: [
-              {
-                path: ':postId',
-                element: <PostDetail title={"Článek"} />,
               },
             ]
           },

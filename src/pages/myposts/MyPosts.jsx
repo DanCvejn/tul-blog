@@ -2,10 +2,11 @@ import { IconPlus } from '@tabler/icons-react';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Content from '../../components/Content/Content';
-import Posts from '../../components/posts/Posts';
 import { getMyPosts } from '../../helpers/apiFetch';
 import setDocumentTitle from '../../helpers/setTitle';
 import { UserContext } from '../../providers/UserProvider';
+import MyPostsList from './MyPostsList';
+import FullPageLoader from "../../components/loaders/FullPageLoader";
 
 const getData = async (setData , page, user) => {
   const res = await getMyPosts(page, user.id);
@@ -15,7 +16,7 @@ const getData = async (setData , page, user) => {
 const MyPosts = ({ title }) => {
   setDocumentTitle(title);
   const { user } = useContext(UserContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState();
 
   useEffect(() => {
     if (user) {
@@ -25,7 +26,11 @@ const MyPosts = ({ title }) => {
 
   return (
     <Content title={"Moje články"} >
-      <Posts posts={posts} />
+      {
+        posts ?
+          <MyPostsList posts={posts} />:
+          <FullPageLoader />
+      }
       {user?.canCreate &&
         <Link
           to={"/my-posts/create"}

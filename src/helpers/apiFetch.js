@@ -18,6 +18,7 @@ export const getAllPosts = async (page, filter, sortBy) => {
 export const getMyPosts = async (page, userId) => {
   let options = {
     filter: `author.id = "${userId}"`,
+    sort: "-created",
   };
   const res = await pb.collection('posts').getList(page, 10, options);
   return res;

@@ -4,14 +4,13 @@ import { getAllPosts } from "../../helpers/apiFetch";
 import setDocumentTitle from "../../helpers/setTitle";
 import Content from "../../components/Content/Content";
 import FullPageLoader from "../../components/loaders/FullPageLoader";
-import JoinUs from "../../components/promos/JoinUs";
 
 const getData = async (setData , page, filter, sortBy) => {
   const res = await getAllPosts(page, filter, sortBy);
   return setData(res.items);
 }
 
-const MainPage = ({ title }) => {
+const PostsPage = ({ title }) => {
   const [posts, setPosts] = useState(null);
   setDocumentTitle(title)
 
@@ -24,11 +23,11 @@ const MainPage = ({ title }) => {
       <Content>
         {!posts ?
           <FullPageLoader />:
-          <Posts posts={posts} promo={<JoinUs />} />
+          <Posts posts={posts} />
         }
       </Content>
     </>
   )
 }
 
-export default MainPage
+export default PostsPage
