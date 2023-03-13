@@ -42,6 +42,28 @@ export const createNewPost = async (data) => {
   }
 }
 
+export const updatePost = async (id, data) => {
+  delete data.author;
+  try {
+    const res = await pb.collection("posts").update(id ,data);
+    if (res.errorMessage) {
+      return { error: true, message: "Při ukládání změn článku nastala chyba." }
+    }
+    return res;
+  } catch (error) {
+    console.log(error);
+    return { error: true, message: "Při ukládání změn článku nastala chyba." }
+  }
+}
+
+export const deletePost = async (id) => {
+  const res = await pb.collection("posts").delete(id);
+  if (!res) {
+    return { error: false };
+  }
+  return { error: true, message: "Nastala chyba při odstraňování." };
+}
+
 export const register = async (data) => {
   try {
     const res = await pb.collection("users").create(data);

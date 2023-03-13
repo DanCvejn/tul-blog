@@ -8,6 +8,7 @@ import CreatePost from "../pages/myposts/CreatePost";
 import User from '../pages/User/User';
 import PostDetail from '../components/posts/PostDetail';
 import PostsPage from "../pages/posts/PostsPage";
+import EditPost from '../pages/myposts/EditPost';
 
 const routes = [
   {
@@ -58,6 +59,10 @@ const routes = [
               {
                 path: 'create',
                 element: <CreatePost title={"Nový post"} />,
+              },
+              {
+                path: 'edit/:postId',
+                element: <EditPost title={"Upravit post"} />,
               },
             ]
           },
