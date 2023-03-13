@@ -10,7 +10,7 @@ import { useState } from "react";
 import Link from "@tiptap/extension-link";
 import Image from '@tiptap/extension-image';
 
-const TextEditor = ({ label, required, onChange, handleSave }) => {
+const TextEditor = ({ label, required, onChange, handleSave, value }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalCfg, setModalCfg] = useState({});
   const editor = useEditor({
@@ -33,7 +33,7 @@ const TextEditor = ({ label, required, onChange, handleSave }) => {
       }),
       Image
     ],
-    content: `<p></p>`,
+    content: value ? value : `<p></p>`,
     onUpdate: ({ editor }) => {
       const textHTML = editor.getHTML();
       onChange("text", textHTML);
