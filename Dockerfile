@@ -2,7 +2,7 @@ FROM node:latest as build
 WORKDIR /web
 ENV PATH /web/node_modules/.bin:$PATH
 COPY package.json ./
-RUN npm install react-scripts@latest -g --silent
+RUN npm install
 COPY . ./
 RUN npm run build
 
