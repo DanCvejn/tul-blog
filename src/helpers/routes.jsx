@@ -36,7 +36,7 @@ const routes = [
             children: [
               {
                 path: '',
-                element: <PostsPage title={"Článeky"} />,
+                element: <PostsPage title={"Články"} />,
               },
               {
                 path: ':postId',
@@ -47,22 +47,22 @@ const routes = [
           {
             path: '/my-posts',
             url: '/my-posts',
-            text: 'Moje posty',
+            text: 'Moje články',
             menu: true,
             needUser: true,
             children: [
               {
                 index: true,
                 path: '',
-                element: <MyPosts title={'Moje posty'} />,
+                element: <MyPosts title={'Moje články'} />,
               },
               {
                 path: 'create',
-                element: <CreatePost title={"Nový post"} />,
+                element: <CreatePost title={"Nový článek"} />,
               },
               {
                 path: 'edit/:postId',
-                element: <EditPost title={"Upravit post"} />,
+                element: <EditPost title={"Upravit článek"} />,
               },
             ]
           },

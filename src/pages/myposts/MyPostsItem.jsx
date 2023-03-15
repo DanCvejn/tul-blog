@@ -4,16 +4,15 @@ import Button from "../../components/buttons/Button";
 import { deletePost } from "../../helpers/apiFetch";
 import { parseDate } from "../../helpers/parsing";
 
-const MyPostsItem = ({ post }) => {
+const MyPostsItem = ({ post, getData }) => {
   const navigate = useNavigate();
-  const revalidator = useRevalidator();
 
   const handleDelete = async () => {
     const res = await deletePost(post.id);
     if (!res.error) {
       return console.log(res.message);
     }
-    return navigate("/my-posts");
+    return getData();
   }
 
   return (

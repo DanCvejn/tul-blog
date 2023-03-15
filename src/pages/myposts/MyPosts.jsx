@@ -28,7 +28,7 @@ const MyPosts = ({ title }) => {
     <Content title={"Moje články"} >
       {
         posts ?
-          <MyPostsList posts={posts} />:
+          <MyPostsList posts={posts} getData={() => getData(setPosts, 1, user)} />:
           <FullPageLoader />
       }
       {user?.canCreate &&
