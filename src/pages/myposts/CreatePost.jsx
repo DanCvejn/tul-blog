@@ -10,7 +10,6 @@ import { IconPlus } from "@tabler/icons-react";
 import FormError from "../../components/forms/FormError";
 import { createNewPost, getTags } from "../../helpers/apiFetch";
 import { useNavigate } from "react-router-dom";
-import Select from "../../components/forms/Select";
 import FormSelect from "../../components/forms/Select";
 
 const initialValues = {
@@ -58,7 +57,10 @@ const CreatePost = ({ title }) => {
     }
     let data = form;
     data.author = user.id;
-    console.log(data);
+    const tags = form?.tags?.map(tag => {
+      return tag.value;
+    })
+    data.tags = tags;
     setLoading(true);
     const res = await createNewPost(data);
     setLoading(false);

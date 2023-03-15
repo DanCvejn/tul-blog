@@ -1,12 +1,31 @@
+@import "../../styles/variables";
+
 .select {
-  &__control, &__menu {
+  border-radius: .75rem;
+  border: 1px solid;
+  --tw-border-opacity: 1 !important;
+  border-color: rgba(33, 37, 41, 1) !important;
+  border-color: rgb(33 37 41 / var(--tw-border-opacity)) !important;
+
+  &__control, &__control:hover {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  &__menu {
     box-shadow: none;
     border: 1px solid;
-    border-radius: .75rem;
+    overflow: hidden;
+    border-radius: .75rem !important;
     --tw-border-opacity: 1 !important;
     border-color: rgba(33, 37, 41, 1) !important;
     border-color: rgb(33 37 41 / var(--tw-border-opacity)) !important;
+    &-list {padding: 0 !important;}
   }
+
+  &__option {background: white !important; transition: .3s;}
+  &__option:hover {background: transparentize($light-blue, .7) !important;}
 
   &__placeholder {
     font-size: 1rem;

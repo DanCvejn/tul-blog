@@ -10,7 +10,16 @@ const LastPostPreview = ({ post, className }) => {
       <img src={post.img} alt="" />
       <div className="post__content">
         <h3 className="text-2xl mb-4">{post.title}</h3>
-        <p className="text-gray-700">{parseName(post.expand.author)} - {parseDate(new Date(post.created), "HH:mm, D. M. YYYY")}</p>
+        <div className="flex justify-between items-center w-full">
+          <p className="text-gray-700">{parseName(post.expand.author)} - {parseDate(new Date(post.created), "HH:mm, D. M. YYYY")}</p>
+          <div className="flex">
+            {
+              post.expand?.tags?.map(tag => {
+                return <p className="text-sm bg-transparent-300 rounded-lg py-1 px-2 ml-2">{tag.name}</p>
+              })
+            }
+          </div>
+        </div>
       </div>
     </div>
   )

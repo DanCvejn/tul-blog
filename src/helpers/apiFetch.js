@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase(import.meta.env.VITE_API_URL);
+const pb = new PocketBase("https://tul.dcreative.cz");
 pb.autoCancellation(false);
 
 export const getAllPosts = async (page, filter, sortBy) => {

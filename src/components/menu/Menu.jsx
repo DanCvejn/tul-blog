@@ -11,7 +11,7 @@ const Menu = () => {
   const menuItems = getMenuRoutes(user);
 
   return (
-    <div className="bg-indigo-800 py-4 font-unbounded sticky top-0">
+    <div className="bg-indigo-800 py-4 font-unbounded sticky top-0 z-10">
       <Container>
         <nav className="menu flex justify-between items-center">
           <NavLink to={'/'} className="menu__link menu__main-link no-underline font-black text-2xl">Jak na web</NavLink>

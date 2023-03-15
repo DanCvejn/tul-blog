@@ -8,12 +8,16 @@ import Button from "../../components/buttons/Button";
 import { IconDeviceFloppy } from "@tabler/icons-react";
 import FormError from "../../components/forms/FormError";
 import { useNavigate, useParams } from 'react-router-dom';
-import { getPostById, updatePost } from "../../helpers/apiFetch";
+import { getPostById, getTags, updatePost } from "../../helpers/apiFetch";
 import FullPageLoader from "../../components/loaders/FullPageLoader";
+import FormSelect from "../../components/forms/Select";
 
 const getData = async (postId, setPost) => {
   const res = await getPostById(postId);
   res.author = res.expand.author;
+  res.tags = res.expand?.tags?.map(tag => {
+    return { value: tag.id, label: tag.name };
+  })
   return setPost(res);
 }
 
@@ -33,10 +37,12 @@ const EditPost = ({ title }) => {
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [tagsOptions, setTagOptions] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     getData(postId, setForm);
+    getOptions(setTagOptions);
   }, [])
 
   if (!form) return (<FullPageLoader />);
@@ -56,6 +62,10 @@ const EditPost = ({ title }) => {
     setLoading(true);
     const id = form.id;
     delete form.id;
+    const tags = form?.tags?.map(tag => {
+      return tag.value;
+    })
+    form.tags = tags;
     const res = await updatePost(id, form);
     setLoading(false);
     if (res.error) {
@@ -95,6 +105,16 @@ const EditPost = ({ title }) => {
           disabled={loading}
         />
         <TextEditor label={"Hlavní text"} required onChange={changeValue} value={form.text} />
+        <FormSelect
+          label={"Štítky"}
+          placeholder={"Vyberte štítky souvislé k článku"}
+          value={form.tags}
+          onChange={(value) => {changeValue("tags", value)}}
+          isMulti={true}
+          disabled={loading}
+          options={tagsOptions}
+          required
+        />
         <Button
           text={"Uložit změny"}
           type="submit"

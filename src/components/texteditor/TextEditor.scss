@@ -9,24 +9,31 @@
   border-radius: 1rem;
   overflow: hidden;
   font-family: 'Manrope';
-  background: #f3f3f3;
+  background: transparentize($light-blue, .8);
 
   &-menu {
     width: 100%;
     padding: .5rem;
-    background: #dedede;
+    background: transparentize($light-blue, .8);
     justify-content: start;
+    position: sticky;
+    top: 0;
 
     &__button {
-      background: #c3c3c3;
+      background: transparentize($light-blue, .7);
       transition: .3s;
       border: 0;
       padding: .5rem;
       border-radius: .5rem;
       cursor: pointer;
+      color: black;
 
-      &.is-active, &:hover, &:focus {
-        background: white;
+      &:hover {
+        background: transparentize(white, .6);
+      }
+
+      &.is-active, &:focus {
+        background: transparentize(white, .1);
       }
     }
 
@@ -40,6 +47,8 @@
     background: white;
     border-radius: .75rem;
     padding: .5rem .75rem;
+    max-height: 500px;
+    overflow-y: auto;
 
     & div {min-height: 300px;}
 
@@ -51,6 +60,8 @@
       background: #3c3c3c;
       color: white;
       margin-right: .5rem;
+      display: block;
+      width: fit-content;
     }
 
     img {
