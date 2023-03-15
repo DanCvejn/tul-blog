@@ -1,8 +1,7 @@
 FROM node:latest as build
 WORKDIR /web
-ENV PATH /web/node_modules/.bin:$PATH
 COPY package.json ./
-RUN npm install
+RUN npm i
 COPY . ./
 RUN npm run build
 
