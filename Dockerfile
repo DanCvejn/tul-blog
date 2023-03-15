@@ -10,6 +10,6 @@ RUN npm run build
 FROM flashspys/nginx-static
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /web/build /etc/static
+COPY --from=build /web/dist /etc/static
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
