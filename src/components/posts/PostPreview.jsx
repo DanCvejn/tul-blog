@@ -25,7 +25,7 @@ const PostPreview = ({ post }) => {
           <div className="flex">
             {
               post.expand?.tags?.map(tag => {
-                return <p className="text-sm bg-gray-800 rounded-lg py-1 px-2 ml-2">{tag.name}</p>
+                return <p className="text-sm bg-gray-800 rounded-lg py-1 px-2 ml-2" key={tag.id}>{tag.name}</p>
               })
             }
           </div>

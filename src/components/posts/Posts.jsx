@@ -11,13 +11,13 @@ const Posts = ({ posts, promo }) => {
             <div className="flex gap-2 h-[700px] mb-8">
                 {posts.map((post, i) => {
                     if (i < 1) {
-                        return <LastPostPreview post={post} className="w-1/2" />
+                        return <LastPostPreview post={post} className="w-1/2" key={post.id} />
                     }
                 })}
                 <div className="flex flex-col gap-2 w-1/2">
                     {posts.map((post, i) => {
                         if (i > 0 && i < (promo ? 2 : 3)) {
-                            return <LastPostPreview post={post} />
+                            return <LastPostPreview post={post} key={post.id} />
                         }
                     })}
                     {promo && promo}
