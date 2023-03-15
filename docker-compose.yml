@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  bufet:
+    image: custom-nginx
+    build:
+        context: .
+    container_name: suchomel
+    restart: "always"
+    volumes:
+      - ./web:/static:ro
+    labels:
+      - "traefik.http.routers.suchomel_https.rule=Host(`suchomel.dcreative.cz`)"
+      - "traefik.http.routers.suchomel_https.entrypoints=websecure"
+      - "traefik.http.routers.suchomel_https.tls=true"
+      - "traefik.http.routers.suchomel_https.tls.certResolver=lets-encrypt"
+
+networks:
+  default:
+    name: web

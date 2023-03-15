@@ -28,8 +28,12 @@ const MyPosts = ({ title }) => {
     <Content title={"Moje články"} >
       {
         posts ?
-          <MyPostsList posts={posts} getData={() => getData(setPosts, 1, user)} />:
+          user?.canCreate &&
+            <MyPostsList posts={posts} getData={() => getData(setPosts, 1, user)} />:
           <FullPageLoader />
+      }
+      {!user?.canCreate &&
+        <h2>Nemáš práva na vytváření článků.</h2>
       }
       {user?.canCreate &&
         <Link
