@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   jaknaweb:
-    image: custom-nginx
+    image: custom-nginx:tul
     build:
         context: .
     container_name: jaknaweb
