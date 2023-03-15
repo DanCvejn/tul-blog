@@ -17,6 +17,15 @@ const getData = async (postId, setPost) => {
   return setPost(res);
 }
 
+const getOptions = async (setData) => {
+  const res = await getTags();
+  let result = [];
+  res.map(tag => {
+    return result.push({value: tag.id, label: tag.name});
+  })
+  return setData(result);
+}
+
 const EditPost = ({ title }) => {
   setDocumentTitle(title);
   const { postId } = useParams();

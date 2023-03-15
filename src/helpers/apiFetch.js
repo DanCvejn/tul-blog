@@ -29,6 +29,11 @@ export const getPostById = async (postId) => {
   return res;
 }
 
+export const getTags = async () => {
+  const res = await pb.collection("tags").getFullList({sort: "name"});
+  return res;
+}
+
 export const createNewPost = async (data) => {
   try {
     const res = await pb.collection("posts").create(data);

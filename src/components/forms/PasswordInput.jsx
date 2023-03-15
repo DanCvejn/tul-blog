@@ -1,5 +1,6 @@
 import { IconEye, IconEyeClosed } from '@tabler/icons-react';
 import React, { useState } from 'react'
+import "./Forms.scss";
 
 const PasswordInput = ({ label, placeholder, required, value, onChange, readonly, disabled, autoComplete }) => {
   const [type, setType] = useState("password");

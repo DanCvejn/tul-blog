@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Content from "../../components/Content/Content";
 import TextArea from "../../components/forms/TextArea";
 import TextInput from "../../components/forms/TextInput";
@@ -8,8 +8,10 @@ import TextEditor from "../../components/texteditor/TextEditor";
 import Button from "../../components/buttons/Button";
 import { IconPlus } from "@tabler/icons-react";
 import FormError from "../../components/forms/FormError";
-import { createNewPost } from "../../helpers/apiFetch";
+import { createNewPost, getTags } from "../../helpers/apiFetch";
 import { useNavigate } from "react-router-dom";
+import Select from "../../components/forms/Select";
+import FormSelect from "../../components/forms/Select";
 
 const initialValues = {
   title: "",
@@ -19,6 +21,15 @@ const initialValues = {
   tags: [],
 }
 
+const getData = async (setData) => {
+  const res = await getTags();
+  let result = [];
+  res.map(tag => {
+    return result.push({value: tag.id, label: tag.name});
+  })
+  return setData(result);
+}
+
 const CreatePost = ({ title }) => {
   setDocumentTitle(title);
   const { user } = useContext(UserContext);
@@ -26,6 +37,7 @@ const CreatePost = ({ title }) => {
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [tagsOptions, setTagOptions] = useState([]);
   const navigate = useNavigate();
 
   const changeValue = (type, value) => {
@@ -34,6 +46,10 @@ const CreatePost = ({ title }) => {
     setForm(formTmp);
     setUpdate(!update);
   }
+
+  useEffect(() => {
+    getData(setTagOptions)
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,6 +100,16 @@ const CreatePost = ({ title }) => {
           disabled={loading}
         />
         <TextEditor label={"Hlavní text"} required onChange={changeValue} />
+        <FormSelect
+          label={"Štítky"}
+          placeholder={"Vyberte štítky souvislé k článku"}
+          value={form.tags}
+          onChange={(value) => {changeValue("tags", value)}}
+          isMulti={true}
+          disabled={loading}
+          options={tagsOptions}
+          required
+        />
         <Button
           text={"Vytvořit nový článek"}
           type="submit"

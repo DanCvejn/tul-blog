@@ -1,3 +1,5 @@
+import "./Forms.scss";
+
 const TextArea = ({
                   label,
                   placeholder,

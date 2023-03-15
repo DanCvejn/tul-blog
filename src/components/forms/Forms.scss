@@ -1,0 +1,21 @@
+.select {
+  &__control, &__menu {
+    box-shadow: none;
+    border: 1px solid;
+    border-radius: .75rem;
+    --tw-border-opacity: 1 !important;
+    border-color: rgba(33, 37, 41, 1) !important;
+    border-color: rgb(33 37 41 / var(--tw-border-opacity)) !important;
+  }
+
+  &__placeholder {
+    font-size: 1rem;
+  }
+
+  &__indicator-separator {background: black;}
+  svg {fill: black;}
+}
+
+input, textarea {
+  font-size: 1rem;
+}
