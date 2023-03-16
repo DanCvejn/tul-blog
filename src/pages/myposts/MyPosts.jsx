@@ -1,7 +1,7 @@
 import { IconPlus } from '@tabler/icons-react';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Content from '../../components/Content/Content';
+import Content from '../../components/content/Content';
 import { getMyPosts } from '../../helpers/apiFetch';
 import setDocumentTitle from '../../helpers/setTitle';
 import { UserContext } from '../../providers/UserProvider';

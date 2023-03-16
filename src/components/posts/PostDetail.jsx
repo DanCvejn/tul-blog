@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPostById } from '../../helpers/apiFetch';
 import { parseDate, parseName } from '../../helpers/parsing';
 import setDocumentTitle from '../../helpers/setTitle';
-import Content from '../Content/Content';
+import Content from '../content/Content';
 import FullPageLoader from '../loaders/FullPageLoader';
 import "./Posts.scss";
 

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import Content from '../../components/Content/Content';
+import Content from '../../components/content/Content';
 import { logout } from '../../helpers/apiFetch';
 import setDocumentTitle from '../../helpers/setTitle';
 import { UserContext } from '../../providers/UserProvider';

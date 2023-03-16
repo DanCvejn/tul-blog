@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import Content from "../../components/Content/Content";
+import Content from "../../components/content/Content";
 import TextArea from "../../components/forms/TextArea";
 import TextInput from "../../components/forms/TextInput";
 import setDocumentTitle from "../../helpers/setTitle";

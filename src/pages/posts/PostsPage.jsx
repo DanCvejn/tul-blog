@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Posts from "../../components/posts/Posts";
 import { getAllPosts } from "../../helpers/apiFetch";
 import setDocumentTitle from "../../helpers/setTitle";
-import Content from "../../components/Content/Content";
+import Content from "../../components/content/Content";
 import FullPageLoader from "../../components/loaders/FullPageLoader";
 
 const getData = async (setData , page, filter, sortBy) => {
