@@ -4,7 +4,6 @@ import UserProvider from "./providers/UserProvider";
 
 function App() {
   const routes = createBrowserRouter(getRoutes());
-  console.log('Loaded succesfully');
 
   return (
     <>
