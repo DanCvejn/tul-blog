@@ -1,5 +1,0 @@
-uses:  wirgen/portainer-stack-redeploy-action@v1.1
-with:
-  portainerUrl: 'https://161.97.131.237:9443'
-  accessToken: 'ptr_IlBDQ20JULvmiMbTj6A9jEi2rG6ChEoJ8xXpia67tVI='
-  stackId: 9
