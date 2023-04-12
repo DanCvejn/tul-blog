@@ -7,14 +7,14 @@ const Posts = ({ posts, promo }) => {
 
     return (
         <div className="posts">
-            <h2 className="text-4xl mb-4">Poslední články</h2>
-            <div className="flex gap-2 h-[700px] mb-8">
+            <h2 className="text-4xl mb-4 max-md:mb-8">Poslední články</h2>
+            <div className="flex gap-2 h-[700px] max-md:h-screen mb-8 max-md:flex-col">
                 {posts.map((post, i) => {
                     if (i < 1) {
-                        return <LastPostPreview post={post} className="w-1/2" key={post.id} />
+                        return <LastPostPreview post={post} className="w-1/2 max-md:w-full" key={post.id} />
                     }
                 })}
-                <div className="flex flex-col gap-2 w-1/2">
+                <div className="flex flex-col gap-2 w-1/2 max-md:w-full h-full">
                     {posts.map((post, i) => {
                         if (i > 0 && i < (promo ? 2 : 3)) {
                             return <LastPostPreview post={post} key={post.id} />
