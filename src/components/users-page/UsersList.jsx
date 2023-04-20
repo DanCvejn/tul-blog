@@ -5,7 +5,7 @@ const UsersList = ({ users }) => {
   return (
     <div className="flex flex-col gap-4">
       {users.map(user => {
-        return <UserItem user={user} />
+        return <UserItem userData={user} />
       })}
     </div>
   )
