@@ -17,16 +17,35 @@ const Menu = () => {
           <NavLink to={'/'} className="menu__link menu__main-link no-underline font-black text-2xl">Jak na web</NavLink>
           <ul className="menu__list list-none flex items-center">
             {menuItems.map(item => {
-              return (
-                <li key={item.url}>
-                  <NavLink
-                    to={item.url}
-                    className="menu__link no-underline flex items-center px-2 mx-4 py-1 font-bold"
-                  >
-                    {item.text}
-                  </NavLink>
-                </li>
-              )
+              if (item.permission) {
+                let canSee = false;
+                item?.permission.forEach(perm => {
+                  if (user[perm]) canSee = true;
+                })
+                if (canSee) {
+                  return (
+                    <li key={item.url}>
+                      <NavLink
+                        to={item.url}
+                        className="menu__link no-underline flex items-center px-2 mx-4 py-1 font-bold"
+                      >
+                        {item.text}
+                      </NavLink>
+                    </li>
+                  )
+                }
+              } else {
+                return (
+                  <li key={item.url}>
+                    <NavLink
+                      to={item.url}
+                      className="menu__link no-underline flex items-center px-2 mx-4 py-1 font-bold"
+                    >
+                      {item.text}
+                    </NavLink>
+                  </li>
+                )
+              }
             })}
             {user ?
               <li>

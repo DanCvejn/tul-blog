@@ -2,9 +2,14 @@ export const parseName = (person) => {
   return person.firstName + ' ' + person.lastName;
 }
 
+const zeroCheck = (time) => {
+  if (parseInt(time) < 10) return "0" + time;
+  return time
+}
+
 export const parseDate = (date, format) => {
   let returnDate = format;
-  const mm = date.getMinutes().toString();
+  const mm = zeroCheck(date.getMinutes().toString());
   returnDate = returnDate.replace("mm", mm);
   const HH = date.getHours().toString();
   returnDate = returnDate.replace("HH", HH);

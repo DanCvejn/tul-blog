@@ -105,6 +105,11 @@ export const getUser = async () => {
   return null;
 }
 
+export const getAllUsers = async () => {
+  const res = await pb.collection("users").getFullList({ sort: "lastName" });
+  return res;
+}
+
 export const logout = async () => {
   pb.authStore.clear();
   return true;

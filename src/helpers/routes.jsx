@@ -9,6 +9,7 @@ import User from '../pages/user/User';
 import PostDetail from '../components/posts/PostDetail';
 import PostsPage from "../pages/posts/PostsPage";
 import EditPost from '../pages/myposts/EditPost';
+import Users from '../pages/users/Users';
 
 const routes = [
   {
@@ -50,6 +51,7 @@ const routes = [
             text: 'Moje články',
             menu: true,
             needUser: true,
+            permission: ["canCreate"],
             children: [
               {
                 index: true,
@@ -64,6 +66,21 @@ const routes = [
                 path: 'edit/:postId',
                 element: <EditPost title={"Upravit článek"} />,
               },
+            ]
+          },
+          {
+            path: "/users",
+            url: "/users",
+            text: "Uživatelé",
+            menu: true,
+            needUser: true,
+            permission: ["admin"],
+            children: [
+              {
+                index: true,
+                path: "",
+                element: <Users title={"Správa uživatelů"} />
+              }
             ]
           },
           {
