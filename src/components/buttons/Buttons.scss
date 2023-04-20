@@ -11,6 +11,8 @@ button {
   padding: 0.75rem 1rem;
   cursor: pointer;
 
+  &:disabled {opacity: .5;}
+
   &.left svg {margin-right: .5rem;}
   &.right svg {margin-left: .5rem;}
 }
@@ -19,7 +21,7 @@ button.primary {
   background: #25262B;
   color: white;
 
-  &:hover, &:disabled {
+  &:hover {
     background: #1A1B1E;
   }
 }
@@ -28,7 +30,7 @@ button.secondary {
   border: 1px solid #25262B;
   background: white;
 
-  &:hover, &:disabled {
+  &:hover {
     background: #eaeaea;
   }
 }
@@ -38,7 +40,7 @@ button.submit {
   color: white;
   font-weight: bold;
 
-  &:hover, &:disabled {
+  &:hover {
     background: $light-blue;
   }
 }

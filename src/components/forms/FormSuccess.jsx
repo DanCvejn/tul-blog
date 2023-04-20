@@ -1,5 +1,4 @@
 import { IconCheck, IconX } from '@tabler/icons-react'
-import React from 'react'
 
 const FormSuccess = ({ text, closeSuccess }) => {
   return (

@@ -10,6 +10,7 @@ import PostDetail from '../components/posts/PostDetail';
 import PostsPage from "../pages/posts/PostsPage";
 import EditPost from '../pages/myposts/EditPost';
 import Users from '../pages/users/Users';
+import UsersEditPage from '../pages/users/UsersEditPage';
 
 const routes = [
   {
@@ -79,7 +80,11 @@ const routes = [
               {
                 index: true,
                 path: "",
-                element: <Users title={"Správa uživatelů"} />
+                element: <Users title={"Správa uživatelů"} />,
+              },
+              {
+                path: "edit/:userId",
+                element: <UsersEditPage title={"Editace uživatele"} />,
               }
             ]
           },

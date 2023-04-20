@@ -110,6 +110,16 @@ export const getAllUsers = async () => {
   return res;
 }
 
+export const getUserById = async (userId) => {
+  const res = await pb.collection("users").getOne(userId);
+  return res;
+}
+
+export const updateUser = async (userId, values) => {
+  const res = await pb.collection("users").update(userId, values);
+  return res;
+}
+
 export const logout = async () => {
   pb.authStore.clear();
   return true;

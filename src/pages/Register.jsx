@@ -1,5 +1,5 @@
 import { IconArrowRight } from "@tabler/icons-react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "../components/buttons/Button";
 import FormError from "../components/forms/FormError";
 import FormSuccess from "../components/forms/FormSuccess";
@@ -7,6 +7,8 @@ import PasswordInput from "../components/forms/PasswordInput";
 import TextInput from "../components/forms/TextInput";
 import { register } from "../helpers/apiFetch";
 import setDocumentTitle from "../helpers/setTitle";
+import { UserContext } from "../providers/UserProvider";
+import { useNavigate } from "react-router-dom";
 
 const Register = ({ title }) => {
   setDocumentTitle(title);
@@ -18,10 +20,13 @@ const Register = ({ title }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordAgain) return setError("Hesla se neshodují");
+    if (password.length < 8) return setError("Heslo je kratší než 8 znaků");
     setLoading(true);
     const data = {
       firstName,
@@ -35,8 +40,12 @@ const Register = ({ title }) => {
     if (res?.error) {
       return setError(res.message);
     }
-    return setSuccess("Účet byl úspěšně vytvořen, zkontroluj email pro dokončení registrace.");
+    return setSuccess("Účet byl úspěšně vytvořen, zkontroluj e-mail pro dokončení registrace.");
   }
+
+  useEffect(() => {
+    if (user) return navigate("/");
+  }, [])
 
   return (
     <div className="flex flex-col items-center mt-10 w-1/3 m-auto">
