@@ -10,6 +10,9 @@ function App() {
       <UserProvider>
         <RouterProvider router={routes} />
       </UserProvider>
+      <div className="info text-sm absolute bottom-0 left-0 w-full bg-white text-center p-2">
+        Tento web vznikl jako projekt na předmět WA. Více <a href="https://github.com/DanCvejn/tul-blog" target="_blank">zde.</a>
+      </div>
     </>
   )
 }
