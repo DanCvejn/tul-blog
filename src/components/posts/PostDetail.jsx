@@ -33,7 +33,7 @@ const PostDetail = ({ title }) => {
         <p className='font-bold subtitle'>{post.subtitle}</p>
         <img src={post.img} alt="" className='main-image' />
         <div dangerouslySetInnerHTML={{ __html: post.text }} className="text"></div>
-        <p className="text-gray-300">
+        <p className="text-gray-300 mt-8 w-full text-right">
           Článek napsal: <span className="text-black">
             {parseName(post.author)} ({parseDate(date, "HH:mm, D. M. YYYY")})
           </span>
