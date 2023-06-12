@@ -38,7 +38,7 @@ const MyPosts = ({ title }) => {
       {user?.canCreate &&
         <Link
           to={"/my-posts/create"}
-          className="fixed bottom-4 right-4 flex justify-start items-center gap-3 hover:gap-2 bg-indigo-300 text-white no-underline p-3 rounded-xl w-[46px] h-[46px] hover:w-[172px] duration-500"
+          className="fixed bottom-4 right-4 flex justify-start items-center gap-3 hover:gap-2 bg-indigo-300 text-white no-underline p-3 rounded-xl w-[46px] h-[46px] hover:w-[172px] duration-500 z-50"
         >
           <div className="h-[24px]">
             <IconPlus stroke={1.5} size={24} />
