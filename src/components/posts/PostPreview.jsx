@@ -13,7 +13,11 @@ const PostPreview = ({ post }) => {
                   duration-300
                   rounded-xl
                   border-solid
-                  border-transparent-50 border-2 hover:bg-indigo-900"
+                  border-transparent-50
+                  border-2
+                  bg-indigo-900
+                  bg-opacity-40
+                  hover:bg-indigo-900"
       onClick={() => navigate("/posts/" + post.id)}
     >
       <img src={post.img} alt="" className="rounded-xl mr-8" />
@@ -25,7 +29,7 @@ const PostPreview = ({ post }) => {
           <div className="flex">
             {
               post.expand?.tags?.map(tag => {
-                return <p className="text-sm bg-gray-800 rounded-lg py-1 px-2 ml-2" key={tag.id}>{tag.name}</p>
+                return <p className="text-sm text-white bg-dark-200 rounded-lg py-1 px-2 ml-2" key={tag.id}>{tag.name}</p>
               })
             }
           </div>
