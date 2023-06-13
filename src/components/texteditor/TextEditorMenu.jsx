@@ -136,7 +136,7 @@ const TextEditorMenu = ({ editor, handleSave, openModal, setModalCfg }) => {
         <IconListNumbers stroke={iconStroke} size={iconSize} />
       </button>
       <button
-        onClick={() => editor.chain().focus().toggleCode().run()}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         type="button"
         className={"texteditor-menu__button " + (editor.isActive('code') ? 'is-active' : '')}
       >

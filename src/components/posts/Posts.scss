@@ -23,6 +23,9 @@
   .main-image {
     width: 100%;
     max-width: 900px;
+    aspect-ratio: 5/3;
+    object-fit: cover;
+    object-position: center;
     margin-bottom: 2rem;
   }
   img {border-radius: .75rem;}
@@ -34,14 +37,36 @@
       margin-left: 1.5rem;
     }
     a {color: black;}
-    code {
-      padding: .75rem 1.5rem;
+    pre {
+      padding: 1.5rem;
       border-radius: .75rem;
       background: #3c3c3c;
       color: white;
       margin-right: .5rem;
       display: block;
-      width: fit-content;
+      width: 100%;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        height: 7px;
+      }
+      &::-webkit-scrollbar-track {
+        border-bottom-left-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+        background: #3c3c3c;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ffffff80;
+        border-radius: .5rem;
+        transition: .3s;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #ffffffb1;
+      }
+
+      code {
+        width: 100%;
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 import PasswordInput from "../components/forms/PasswordInput";
 import Button from "../components/buttons/Button";
 import { IconArrowRight } from "@tabler/icons-react";
-import { login } from "../helpers/apiFetch";
+import { login, updateUser } from "../helpers/apiFetch";
 import FormError from "../components/forms/FormError";
 
 const Login = ({ title }) => {
@@ -18,6 +18,9 @@ const Login = ({ title }) => {
     e.preventDefault();
     setLoading(true);
     const res = await login(email, password);
+    if (!res.record.emailVisibility) {
+      await updateUser(res.record.id, { emailVisibility: true })
+    }
     setLoading(false);
     if (res.error) {
       return setError(res.message);

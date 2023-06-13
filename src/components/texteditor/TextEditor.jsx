@@ -4,11 +4,11 @@ import { Color } from "@tiptap/extension-color";
 import ListItem from '@tiptap/extension-list-item';
 import TextStyle from '@tiptap/extension-text-style';
 import TextEditorMenu from "./TextEditorMenu";
-import Code from "@tiptap/extension-code";
 import TextEditorModal from "./TextEditorModal";
 import { useState } from "react";
 import Link from "@tiptap/extension-link";
 import Image from '@tiptap/extension-image';
+import CodeBlock from "@tiptap/extension-code-block";
 
 const TextEditor = ({ label, required, onChange, handleSave, value }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,11 +27,11 @@ const TextEditor = ({ label, required, onChange, handleSave, value }) => {
           keepAttributes: false,
         },
       }),
-      Code,
       Link.configure({
         openOnClick: false,
       }),
-      Image
+      Image,
+      CodeBlock,
     ],
     content: value ? value : `<p></p>`,
     onUpdate: ({ editor }) => {

@@ -28,7 +28,7 @@ const UsersEdit = ({ user }) => {
     if (res) {
       return setResponse({ type: "success", text: "Změny byly uloženy." });
     }
-    return setResponse({ type: "Error", text: "Nastala chyba při ukládání změn" });
+    return setResponse({ type: "error", text: "Nastala chyba při ukládání změn" });
   }
 
   return (
