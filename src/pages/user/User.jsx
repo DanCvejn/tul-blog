@@ -12,9 +12,9 @@ import TextInput from '../../components/forms/TextInput';
 import PasswordInput from '../../components/forms/PasswordInput';
 
 const basicFormInitial = {
-    firstName: "",
-    lastName: "",
-  }
+  firstName: "",
+  lastName: "",
+}
 
 const passwordFormInitial = {
   oldPassword: "",
@@ -76,18 +76,18 @@ const User = () => {
         <form onSubmit={(e) => handleSubmit(e, "basic")} className="mb-4">
           {(response && response.form === "basic") && (response.type === "error" ?
             <FormError error={response?.text} closeError={() => setResponse(null)} /> :
-            <FormSuccess text={response?.text} closeSuccess={() => setResponse(null)}  />
+            <FormSuccess text={response?.text} closeSuccess={() => setResponse(null)} />
           )}
           <TextInput
             value={basicForm.firstName}
-            onChange={(e) => {changeFormData(e.target.value, "firstName", basicForm, setBasicForm)}}
+            onChange={(e) => { changeFormData(e.target.value, "firstName", basicForm, setBasicForm) }}
             label={"Jméno uživatele"}
             required
             disabled={loading}
           />
           <TextInput
             value={basicForm.lastName}
-            onChange={(e) => {changeFormData(e.target.value, "lastName", basicForm, setBasicForm)}}
+            onChange={(e) => { changeFormData(e.target.value, "lastName", basicForm, setBasicForm) }}
             label={"Příjmení uživatele"}
             required
             disabled={loading}
@@ -105,25 +105,25 @@ const User = () => {
         <form onSubmit={(e) => handleSubmit(e, "password")} className="mb-8">
           {(response && response.form === "password") && (response.type === "error" ?
             <FormError error={response?.text} closeError={() => setResponse(null)} /> :
-            <FormSuccess text={response?.text} closeSuccess={() => setResponse(null)}  />
+            <FormSuccess text={response?.text} closeSuccess={() => setResponse(null)} />
           )}
           <PasswordInput
             value={passwordForm.oldPassword}
-            onChange={(e) => {changeFormData(e.target.value, "oldPassword", passwordForm, setPasswordForm)}}
+            onChange={(e) => { changeFormData(e.target.value, "oldPassword", passwordForm, setPasswordForm) }}
             label={"Staré heslo"}
             required
             disabled={loading}
           />
           <PasswordInput
             value={passwordForm.password}
-            onChange={(e) => {changeFormData(e.target.value, "password", passwordForm, setPasswordForm)}}
+            onChange={(e) => { changeFormData(e.target.value, "password", passwordForm, setPasswordForm) }}
             label={"Nové heslo"}
             required
             disabled={loading}
           />
           <PasswordInput
             value={passwordForm.passwordConfirm}
-            onChange={(e) => {changeFormData(e.target.value, "passwordConfirm", passwordForm, setPasswordForm)}}
+            onChange={(e) => { changeFormData(e.target.value, "passwordConfirm", passwordForm, setPasswordForm) }}
             label={"Nové heslo znovu"}
             required
             disabled={loading}

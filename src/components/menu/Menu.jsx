@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getMenuRoutes } from "../../helpers/routes";
 import { UserContext } from "../../providers/UserProvider";
@@ -9,13 +9,14 @@ import "./Menu.scss";
 const Menu = () => {
   const { user } = useContext(UserContext);
   const menuItems = getMenuRoutes(user);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="bg-indigo-800 py-4 font-unbounded fixed top-0 z-10 w-full">
       <Container>
-        <nav className="menu flex justify-between items-center">
+        <nav className={"menu flex justify-between items-center " + (menuOpen ? "opened" : "")}>
           <NavLink to={'/'} className="menu__link menu__main-link no-underline font-black text-2xl">Jak na web</NavLink>
-          <ul className="menu__list list-none flex items-center">
+          <ul className="menu__list list-none flex items-center" onClick={() => setMenuOpen(false)}>
             {menuItems.map(item => {
               if (item.permission) {
                 let canSee = false;
@@ -60,6 +61,14 @@ const Menu = () => {
               </li>
             }
           </ul>
+          <div className="menu__cross" onClick={() => setMenuOpen(!menuOpen)}>
+            <span className="line"></span>
+            <div className="texts">
+              <span className="text">OPEN</span>
+              <span className="text">CLOSE</span>
+            </div>
+            <span className="line"></span>
+          </div>
         </nav>
       </Container>
     </div>

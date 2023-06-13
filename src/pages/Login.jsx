@@ -25,7 +25,7 @@ const Login = ({ title }) => {
     if (res.error) {
       return setError(res.message);
     } else {
-      return window.location.reload();
+      return window.location.href = "/";
     }
   }
 

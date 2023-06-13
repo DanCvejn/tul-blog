@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { getUser } from '../helpers/apiFetch';
+import FullPageLoader from '../components/loaders/FullPageLoader';
 
 export const UserContext = createContext(null);
 
@@ -10,9 +11,15 @@ const getUserFromAPI = async (setUser) => {
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const setUserData = (user) => {
+    setLoading(false);
+    setUser(user);
+  }
 
   useEffect(() => {
-    getUserFromAPI(setUser);
+    getUserFromAPI(setUserData);
   }, [])
 
   useEffect(() => {
@@ -23,7 +30,10 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ user }}>
-      {children}
+      {!loading ?
+        children:
+        <FullPageLoader />
+      }
     </UserContext.Provider>
   )
 }
