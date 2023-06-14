@@ -68,9 +68,9 @@
       transform: translate(.25rem, -.25rem);
       &::after {transform: translate(-.25rem, .25rem);}
     }
-
-    &__cross {display: none;}
   }
+
+  &__cross {display: none;}
 
   @media only screen and (max-width: 768px) {
     .menu__list {

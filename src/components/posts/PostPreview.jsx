@@ -22,8 +22,8 @@ const PostPreview = ({ post }) => {
     >
       <img src={post.img} alt="" className="rounded-xl mr-8" />
       <div className="post__content w-full p-4 pl-0 relative">
-        <h3 className="text-lg mb-2">{post.title}</h3>
-        <p className="max-h-[40%] mb-2 overflow-hidden">{post.subtitle}</p>
+        <h3 className="text-lg mb-2 title">{post.title}</h3>
+        <p className="max-h-[40%] mb-2 overflow-hidden subtitle">{post.subtitle}</p>
         <div className="flex justify-between items-center w-[95%] absolute bottom-4 opacity-70">
           <p>{parseName(post.expand.author)}</p>
           <div className="flex">
